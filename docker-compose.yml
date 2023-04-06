@@ -1,0 +1,45 @@
+
+version: '2.4'
+
+services:
+  ipfs:
+    image: ipfs/kubo:v0.18.1
+    container_name: marketplace_ipfs
+    ports:
+      - 4001:4001
+      - 4001:4001/udp
+      - 8080:8080
+      - 5001:5001
+    networks:
+      - marketplace-backend
+    volumes:
+      - ipfs-staging:/export
+      - ipfs-data:/data/ipfs
+
+  marketplace:
+    container_name: marketplace
+    build:
+      context: ./
+      target: dev
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - ipfs
+    networks:
+      - marketplace-backend
+
+
+  # TODO: Add service for Ethereum full node
+  #  https://hub.docker.com/r/ethereum/client-go
+
+
+  # TODO: Add service for Ethereum Transaction indexer
+  #  https://github.com/autonomoussoftware/ethereum-transaction-indexer/blob/develop/Dockerfile
+
+networks:
+  marketplace-backend:
+
+volumes:
+  ipfs-staging:
+  ipfs-data:
