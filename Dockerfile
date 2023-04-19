@@ -1,4 +1,5 @@
-FROM node:18.15-alpine3.17 as base
+# FROM node:18.15-alpine3.17 as base
+FROM node:18.15-bullseye as base
 
 WORKDIR /app
 COPY ./Marketplace ./Marketplace

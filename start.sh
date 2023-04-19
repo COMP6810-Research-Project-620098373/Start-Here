@@ -15,5 +15,7 @@ git clone git@github.com:COMP6810-Research-Project-620098373/Marketplace.git &> 
 git clone git@github.com:COMP6810-Research-Project-620098373/IPFS.git &> /dev/null
 wait
 
+cp ./Marketplace-Backend/.env.template ./Marketplace-Backend/.env
+
 printf "\n\nDownload complete. Starting Marketplace Application...\n\n"
 docker-compose up
