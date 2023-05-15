@@ -1,6 +1,9 @@
 #!/bin/bash
 readonly system_dependencies_required=("docker" "docker-compose" "git")
 readonly marketplace_container_ipfs_hash="QmbYrFWgDMpudzP3W9C6GPgQzyYWq6m7ZFDHPnYQFn9arX"
+readonly ipfs_container_ipfs_hash="QmSQMWXyXXeQixnQ9nE83Z5AVZvJpoNWVdQfKBv1Qp5QDG"
+# readonly ethereum_container_ipfs_hash=""
+# readonly ethereum_transaction_indexer_container_ipfs_hash=""
 
 for dep in ${system_dependencies_required[@]}; do
     which $dep > /dev/null
@@ -61,6 +64,8 @@ do
             docker commit marketplace start-here_marketplace_bkup:latest
             docker save start-here_marketplace_bkup > start-here_marketplace.tar
             docker cp ./start-here_marketplace.tar marketplace_ipfs:/home
+
+            # TODO: ADD IPFS IMAGE AS WELL TO IPFS AND RETRIEVE FROM IPFS
         fi
 
         docker exec marketplace_ipfs /bin/sh -c 'ipfs add ./home/start-here_marketplace.tar --to-files /' > /dev/null
