@@ -1,6 +1,6 @@
 #!/bin/bash
 readonly system_dependencies_required=("docker" "docker-compose" "git")
-readonly marketplace_container_ipfs_hash="QmbYrFWgDMpudzP3W9C6GPgQzyYWq6m7ZFDHPnYQFn9arX"
+readonly marketplace_container_ipfs_hash="QmXKsqtm8A3h6LzVinsxgc1UN462qwdFaJEjQtJyG6JHRp"
 readonly ipfs_container_ipfs_hash="QmSQMWXyXXeQixnQ9nE83Z5AVZvJpoNWVdQfKBv1Qp5QDG"
 # readonly ethereum_container_ipfs_hash=""
 # readonly ethereum_transaction_indexer_container_ipfs_hash=""
@@ -43,7 +43,7 @@ while true
 do
     if [ "$(docker inspect marketplace_ipfs --format '{{.State.Status}}')" = "running" ]; then
         if [ $(docker exec marketplace_ipfs /bin/sh -c 'ipfs files ls / | grep "start-here_marketplace.tar" | wc -c') -gt 0 ]; then
-            # MARKETPLACE CONTAINER ALREADY ADDED TO LOCAL IPFS INSTANCE, SEEDING TO OTHER NODES\
+            # MARKETPLACE CONTAINER ALREADY ADDED TO LOCAL IPFS INSTANCE, SEEDING TO OTHER NODES
             printf "\nMarketplace container successfully saved\n"
             break
         fi
