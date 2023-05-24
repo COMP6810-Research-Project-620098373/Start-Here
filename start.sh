@@ -1,7 +1,6 @@
 #!/bin/bash
 readonly system_dependencies_required=("docker" "docker-compose" "git")
-readonly marketplace_container_ipfs_hash="QmXKsqtm8A3h6LzVinsxgc1UN462qwdFaJEjQtJyG6JHRp"
-readonly ipfs_container_ipfs_hash="QmSQMWXyXXeQixnQ9nE83Z5AVZvJpoNWVdQfKBv1Qp5QDG"
+readonly marketplace_container_ipfs_hash="Qmdb4TRQKeFqE2FqKd22yBdmMaAbXGt1LYp23ctkZP13qa"
 # readonly ethereum_container_ipfs_hash=""
 # readonly ethereum_transaction_indexer_container_ipfs_hash=""
 
